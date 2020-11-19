@@ -12,7 +12,8 @@ Things learned.
 
 -Using inteface extends JPA.
 -Using Model Object.
--Refactoring <How to improve the internal structure without changing the external behavior>
+-Refactoring
+=><How to improve the internal structure without changing the external behavior>
   +static/template
   +static >> css,javascripts,navbar ...
   +templates were Separated by controller function
