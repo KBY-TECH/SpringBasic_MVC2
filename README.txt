@@ -21,6 +21,7 @@ Things learned.
 -Remove duplicate mapping (RequestMapping)
 -Using HttpSession Object and duplicate session Assignment remove.(Create a class.)
 -Data integrity prevention (session use)
+-Object-oriented encapsulation check.
 
 
 
