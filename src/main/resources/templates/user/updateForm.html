@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user Update</title>
+    {{> /include/signUpHeadpart}}
+
+
+</head>
+<body>
+{{> /include/navbar}}
+
+
+<div class="container-fluid">
+    <div class="container">
+        <h2 class="text-center" id="title">user Modify </h2>
+        <hr>
+        <div class="row">
+            {{#user}}
+            <div class="col-md-12">
+                <form role="form" method="post" action="/user/{{id}}/updated">
+                    <input type="hidden" name="_method" value="put"/>
+                    <fieldset>
+                        <p class="text-uppercase pull-center"> modify </p>
+
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control input-lg" value="{{username}}">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control input-lg" value="{{email}}">
+                        </div>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" name="agree" value="check" class="form-check-input">
+                                By Clicking modify you're agree to our policy & terms
+                            </label>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-lg btn-primary"  onclick="c();" value="Modify"/>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            {{/user}}
+
+            <div class="col-md-2">
+                <a class="navbar-brand" href="/" style="text-align-all:right; ">Main</a>
+            </div>
+
+        </div>
+    </div>
+    <p class="text-center">
+        <small id="" class="text-muted"> Developer:<a href="http://www.psau.edu.ph/"> Pampanga state agricultural
+            university ?</a> BS. Information and technology students @2017 Credits: <a
+                href="https://v4-alpha.getbootstrap.com/">boostrap v4.</a></small>
+    </p>
+</div>
+
+</body>
+</html>

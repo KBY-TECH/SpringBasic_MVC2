@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>board Writer</title>
+    {{> /include/signUpHeadpart}}
+
+</head>
+<body>
+{{> /include/navbar}}
+
+<div class="container-fluid">
+    <div class="container">
+        <h2 class="text-center" id="title">user write</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="board" method="post" action="/board/create">
+                    <fieldset>
+                        <p class="text-uppercase pull-center"> write </p>
+                        <div class="form-group">
+                            제목<input type="text" name="title" class="form-control input-lg" value="">
+                        </div>
+                        <div class="form-group">
+                            내용<textarea rows="default" cols="default" name="contents" placeholder="글을 작성해주세요!">
+
+                            </textarea>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-lg btn-primary"  value="Write"/>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <a class="navbar-brand" href="/" style="text-align-all:right; ">Main</a>
+            </div>
+
+        </div>
+    </div>
+    <p class="text-center">
+        <small id="" class="text-muted"> Developer:<a href="http://www.psau.edu.ph/"> Pampanga state agricultural
+            university ?</a> BS. Information and technology students @2017 Credits: <a
+                href="https://v4-alpha.getbootstrap.com/">boostrap v4.</a></small>
+    </p>
+</div>
+
+</body>
+</html>
