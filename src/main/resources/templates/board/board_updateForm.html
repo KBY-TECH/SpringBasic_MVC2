@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>board Writer</title>
+    {{> /include/signUpHeadpart}}
+
+</head>
+<body>
+{{> /include/navbar}}
+
+<div class="container-fluid">
+    <div class="container">
+        <h2 class="text-center" id="title">user write</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="board" method="post" action="/board/{{id}}/updated">
+                    <fieldset>
+                        {{#board}}
+                        <fieldset>
+                            <p class="text-uppercase pull-center"> UpdateForm </p>
+                            <input type="hidden" name="_method" value="put" />
+                            <div class="form-group">
+                                작성자<input type="text" name="username" class="form-control input-lg" value="{{username.username}}" readonly>
+                            </div>
+                            <div class="form-group">
+                                제목<input type="text" name="title" class="form-control input-lg" value="{{title}}" >
+                            </div>
+                            <div class="form-group">
+                                내용<textarea  style="width:100%; height:100%;" name="contents"  >{{contents}}</textarea>
+                            </div>
+                            <div>
+                                <input type="submit" class="btn btn-lg btn-primary"  value="Update"/>
+                            </div>
+                        </fieldset>
+                        {{/board}}
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <a class="navbar-brand" href="/" style="text-align-all:right; ">Main</a>
+            </div>
+
+        </div>
+    </div>
+    <p class="text-center">
+        <small id="" class="text-muted"> Developer:Practice</small>
+    </p>
+</div>
+
+</body>
+</html>

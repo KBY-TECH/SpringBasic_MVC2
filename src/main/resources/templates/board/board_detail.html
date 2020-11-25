@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>board Detail</title>
+    {{> /include/signUpHeadpart}}
+</head>
+<body>
+    <h2> detail </h2>
+
+
+
+    {{> /include/navbar}}
+
+    <div class="container-fluid">
+        <div class="container">
+            <h2 class="text-center" id="title">user write</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    {{^board}}
+                    <p> 게시판이 존재하지 않습니다.</p>
+                    {{/board}}
+                    {{#board}}
+                        <fieldset>
+                            <p class="text-uppercase pull-center"> Detail Board </p>
+                            <div class="form-group">
+                                작성자<input type="text" name="username" class="form-control input-lg" value="{{username.username}}" readonly>
+                            </div>
+                            <div class="form-group">
+                                제목<input type="text" name="title" class="form-control input-lg" value="{{title}}" readonly>
+                            </div>
+                            <div class="form-group">
+                                내용<textarea  style="width:100%; height:100%;" name="contents" readonly >{{contents}}</textarea>
+                            </div>
+                            <div class="col-12">
+                                <a class="btn btn-lg btn-primary" href="/" style="text-align-all:right; ">Main</a>
+                                <a class="btn btn-lg btn-primary" href="/board/{{id}}/board_updateForm" style="text-align-all:right; ">수정</a>
+                                <br>
+                                <br>
+                                <form name="board" method="post" action="/board/{{id}}">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <input type="submit" class="btn btn-lg btn-primary"  value="삭제"/>
+                                </form>
+
+                            </div>
+                            <br><br>
+                            <div>
+                                댓글
+                            </div>
+                        </fieldset>
+                    {{/board}}
+                </div>
+
+            </div>
+        </div>
+        <p class="text-center">
+            <small id="" class="text-muted"> Developer:<a href="#">Practice </a></small>
+        </p>
+    </div>
+
+
+</body>
+</html>

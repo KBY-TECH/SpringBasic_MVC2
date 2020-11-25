@@ -1,6 +1,8 @@
 package com.kbytech.init.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Board {
@@ -8,21 +10,28 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동증가 autoIncrement
     private Long id;
 
-    @Column(nullable = false) // Not Null
-    private String username;
+//    @Column(nullable = false) // Not Null
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name="fk_board_username"))
+    private User username;
     private String title;
     private String contents;
+    private String createDate;
 
-    public Board(String username, String title, String contents) {
+
+
+    public Board(User username, String title, String contents) {
         super();
         this.username = username;
         this.title = title;
         this.contents = contents;
+        this.createDate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public Board() {
 
     }
+
 
     @Override
     public String toString() {
@@ -42,13 +51,6 @@ public class Board {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getTitle() {
         return title;
@@ -64,5 +66,10 @@ public class Board {
 
     public void setContents(String contents) {
         this.contents = contents;
+    }
+
+    public void update(String title, String contents) {
+        this.title=title;
+        this.contents=contents;
     }
 }
