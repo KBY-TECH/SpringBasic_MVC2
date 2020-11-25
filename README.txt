@@ -26,6 +26,23 @@ Things learned.
 
 
 
+#SpringBasic_MVC2
+
+In order to read the overall flow,
+Repetitive CRUD
+
+Things learned.
+
+-Using Annotation. -> one to many (foreginKey)
+-By searching by PK value, I became familiar with the flow of correction, deletion, and detail pages.
+-CRUD become proficient.
+-Refactoring became proficient.
+
+
+
+
+
+
 
 
 
