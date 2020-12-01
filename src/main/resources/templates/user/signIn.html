@@ -7,12 +7,19 @@
 
     {{> /include/signIn_scripts}}
 </head>
-
 <body>
 {{> /include/navbar}}
 <br>
 <br>
 <br>
+{{^errorMsg}}
+<small> Just </small>
+{{/errorMsg}}
+
+{{#errorMsg}}
+<small style="color:red;"> No Access! </small>
+<small>{{errorMsg}}</small>
+{{/errorMsg}}
 <br>
 <div class="login-form">
     <form action="/user/login" method="post">

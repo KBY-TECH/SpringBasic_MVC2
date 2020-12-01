@@ -6,9 +6,6 @@
     {{> /include/signUpHeadpart}}
 </head>
 <body>
-    <h2> detail </h2>
-
-
 
     {{> /include/navbar}}
 
@@ -45,13 +42,54 @@
 
                             </div>
                             <br><br>
-                            <div>
-                                댓글
-                            </div>
+                            <form class="answer-write" method="post" action="/boards/{{id}}/answer">
+                                <div class="form-group" style="padding:14px;">
+                                    <textarea class="form-control" placeholder="Update your status" name="contents"></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-success pull-right" value="답변하기">
+                                <div class="clearfix" />
+                            </form>
                         </fieldset>
-                    {{/board}}
+                    <div class="qna-comment">
+                        <div class="qna-comment-slipp">
+                            <p class="qna-comment-count"><strong>comment</strong></p>
+                            <div class="qna-comment-slipp-articles">
+                                {{^comment}}
+                                <p> 처음으로 댓글을 달아주세요!</p>
+                                {{/comment}}
+                                {{#comment}}
+                                <article class="article" id="answer-1405">
+                                    <div class="article-header">
+                                        <div class="article-header-thumb">
+                                            <img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">
+                                        </div>
+                                        <div class="article-header-text">
+                                            <a href="/users/1/자바지기" class="article-author-name">{{username.username}}</a>
+                                            <a href="#answer-1434" class="article-header-time" title="퍼머링크">
+                                                {{formattiedCreateDate}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="article-doc comment-doc">
+                                        <p>{{contents}}</p>
+                                    </div>
+                                    <div class="article-util">
+                                        <ul class="article-util-list">
+                                            <li>
+                                                <a class="link-modify-article" href="/">수정</a>
+                                            </li>
+                                            <li>
+                                                <form class="delete-answer-form" action="/" method="POST">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="delete-answer-button">삭제</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                                {{/comment}}
                 </div>
-
+                  {{/board}}
             </div>
         </div>
         <p class="text-center">
