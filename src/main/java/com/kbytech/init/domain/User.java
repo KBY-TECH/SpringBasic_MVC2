@@ -1,30 +1,39 @@
 package com.kbytech.init.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 @Entity
-public class User {
-    @Id  // pk
+public class User extends AbstractEntity {
+    /*@Id  // pk
+    @JsonProperty
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동증가 autoIncrement
-    private Long id;
+    private Long id;*/
 
+    @JsonProperty
     @Column(nullable = false) // Not Null
     private String username;
+    @JsonProperty
     private String email;
-    private String pw;
+
+
+    // @ 무시..
+    @JsonIgnore
     private String pw2;
 
-    public Long getId() {
-        return id;
-    }
+    @JsonIgnore
+    private String pw;
+
     public boolean idMatch(Long newId)
         {
             if(newId==null)
                 return false;
-            return newId.equals(id);
+            return newId.equals(getId());
         }
 //   Win: Alt + Insert (get/set)
     public boolean pwMatch(String newPw)
@@ -36,30 +45,17 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return
+                "User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", pw='" + pw + '\'' +
                 ", pw2='" + pw2 + '\'' +
-
+                "super String is "+super.toString()+
                 '}';
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPw() {
-        return pw;
-    }
-
-    public String getPw2() {
-        return pw2;
-    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -83,16 +79,4 @@ public class User {
         this.email=updateuser.email;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

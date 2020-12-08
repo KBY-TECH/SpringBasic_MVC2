@@ -1,5 +1,6 @@
 package com.kbytech.init.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.core.annotation.Order;
 
 import javax.persistence.*;
@@ -9,10 +10,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Board {
-    @Id  // pk
+public class Board extends AbstractEntity {
+  /*  @Id  // pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동증가 autoIncrement
-    private Long id;
+    private Long id;*/
 
 //    @Column(nullable = false) // Not Null
     @ManyToOne
@@ -21,12 +22,16 @@ public class Board {
     private String title;
     @Lob  // 255자가 넘어가면 대입이 안들어가는데 255이상을 받기위해.
     private String contents;
-    private LocalDateTime createDate;
+
+    @JsonProperty
+    public Integer counterOfanswer=0;
+
+//    private LocalDateTime createDate;  상위 class 상속.
     // h2 db에는 binary 타입으로 되어있으므로 변경할거임.-> timestamp 매핑
     // 컨버팅 필요, 해당 클래스 필요.
 
     @OneToMany(mappedBy = "board") // 매핑 대상의 필드 이름. Answer.java 의 private Board board;
-    @OrderBy("id ASC") // 단변 id 의 오름차순.
+    @OrderBy("id DESC ") // 단변 id 의 오름차순.
     private List<Answer> comment;
 
 
@@ -35,31 +40,24 @@ public class Board {
         this.username = username;
         this.title = title;
         this.contents = contents;
-        this.createDate=LocalDateTime.now();
+//        this.createDate=LocalDateTime.now();
     }
 
     public Board() {
 
     }
 
-
     @Override
     public String toString() {
+
         return "Board{" +
-                "id=" + id +
+                "id=" +getId() +
                 ", username='" + username + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + contents + '\'' +
                 '}';
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 
     public String getTitle() {
@@ -79,12 +77,12 @@ public class Board {
     }
 
 
-    public String getFormattiedCreateDate(){
+    /*public String getFormattiedCreateDate(){
         if(createDate == null){
             return "";
         }
         return createDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
-    }
+    }*/
 
     public void update(String title, String contents) {
         this.title=title;
@@ -102,4 +100,10 @@ public class Board {
     }
 
 
+    public void addAnswer() {
+        this.counterOfanswer++;
+    }
+    public void deleteAnswer() {
+        this.counterOfanswer--;
+    }
 }

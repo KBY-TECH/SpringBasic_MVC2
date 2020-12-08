@@ -39,6 +39,18 @@ Things learned.
 -Refactoring became proficient.
 
 
+#SpringBasic_MVC2
+
+In order to read the overall flow,
+Repetitive CRUD
+Refactoring is simple Code
+
+Things learned.
+-Creating a parent class eliminates the lengthy code of the classes.
+-Asynchronous communication method through Ajax processing(Using Jquery)
+-Remove duplicate code in controller part(Simplified session management)
+-The controller's long code is simplified by processing according to the state of each class.
+-The sophistication through redefinition of the method.(equals+hasecode)
 
 
 

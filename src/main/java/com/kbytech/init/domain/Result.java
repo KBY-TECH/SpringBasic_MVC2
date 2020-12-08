@@ -23,7 +23,7 @@ public class Result {
 
     public static Result ok()
     {
-        return new Result(true,null);
+        return new Result(true,"정상적인 상태메시지.");
     }
     public static Result fail(String erroMsg)
     {
